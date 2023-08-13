@@ -1,0 +1,34 @@
+{
+  "name": "Jirafy",
+  "manifest_version": 2,
+  "version": "1.1",
+  "description": "Linkifies JIRA ticket numbers on select pages.  Click the 'Options' link to configure pages to parse and JIRA projects to link.",
+  "icons": {
+    "128": "icon_128.png",
+    "48": "icon_48.png",
+    "16": "icon_16.png"
+  },
+  "background": {
+    "scripts": ["bg.js"]
+  },
+  "page_action": {
+    "default_icon": "icon_16.png",
+    "default_title": "View Jirafy settings."
+  },
+  "permissions": ["http://*/", "https://*/", "tabs"],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "jquery-1.7.2.min.js",
+        "jirafy.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "options_page": "jirafy-config.html"
+}
